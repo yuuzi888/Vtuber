@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunanya</title>
+    
+    <style>
+        /* 基本設定 */
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; }
+
+        /* レイアウトユーティリティ */
+        .container {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .bg-gray { background-color: #f9f9f9; }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
+            color: #4a90e2; /* ミリプロっぽい爽やかな青系 */
+        }
+
+        /* ヘッダー */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .header nav ul { display: flex; gap: 30px; }
+        .header nav a { font-weight: bold; font-size: 0.9rem; }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh; /* 画面いっぱいの高さ */
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; /* ヘッダーの分だけ下げる */
+            box-sizing: border-box;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+        /* ニュースリスト */
+        .news-list li {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        .news-list .date { font-weight: bold; margin-right: 20px; color: #888; }
+        .news-list .category {
+            background: #4a90e2;
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-right: 20px;
+        }
+
+        /* タレントグリッド */
+        .talent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .talent-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .talent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .img-box {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #eee;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        /* --- アニメーション用の設定 --- */
+
+        /* 初期状態：少し下にずらして透明にする */
+        .fade-in-target {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* 表示状態：元の位置に戻して不透明にする */
+        .fade-in-target.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">AGENCY LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="#news">NEWS</a></li>
+                <li><a href="#talent">TALENT</a></li>
+                <li><a href="#about">ABOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content fade-in-target">
+            <h1>「人生を、最高のオープンワールドに。」</h1>
+            <p>次世代のエンターテイメントをここから。</p>
+        </div>
+    </section>
+
+    <section id="news" class="container">
+        <h2 class="section-title fade-in-target">NEWS</h2>
+        <ul class="news-list">
+            <li class="fade-in-target"><span class="date">2025.12.01</span><span class="category">INFO</span>サイトを公開しました</li>
+            <li class="fade-in-target"><span class="date">2026.01.20</span><span class="category">EVENT</span>オーディション開催のお知らせ</li>
+            <li class="fade-in-target"><span class="date">2025.12.15</span><span class="category">VIDEO</span>新作動画を公開しました</li>
+        </ul>
+    </section>
+
+    <section id="talent" class="container bg-gray">
+        <h2 class="section-title fade-in-target">TALENT</h2>
+        <div class="talent-grid">
+            <div class="talent-card fade-in-target">
+                <div class="img-box">
+                    <div class="placeholder-img">Image 01</div> 
+                </div>
+                <h3>Member Name 01</h3>
+                <p>所属タレントA</p>
+            </div>
+            <div class="talent-card fade-in-target">
+                <div class="img-box">
+                    <div class="placeholder-img">Image 02</div>
+                </div>
+                <h3>Member Name 02</h3>
+                <p>所属タレントB</p>
+            </div>
+            <div class="talent-card fade-in-target">
+                <div class="img-box">
+                    <div class="placeholder-img">Image 03</div>
+                </div>
+                <h3>Member Name 03</h3>
+                <p>所属タレントC</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="container">
+        <h2 class="section-title fade-in-target">ABOUT US</h2>
+        <p class="fade-in-target" style="text-align: center;">私たちの目標は、テクノロジーとクリエイティブを融合させ、世界に新しい体験を提供することです。常に新しい才能を探しています。</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My VTuber Agency Demo. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 監視する設定（画面の少し下まで来たら発火）
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            // 交差監視API（Intersection Observer）を使用
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 画面に入ったら 'visible' クラスをつける
+                        entry.target.classList.add("visible");
+                        // 一度表示したら監視をやめる
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            // アニメーションさせたい要素を取得
+            // HTMLで 'fade-in-target' クラスをつけた要素をすべて監視する
+            const targets = document.querySelectorAll('.fade-in-target');
+
+            // 監視開始
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        });
+    </script>
+
+</body>
+</html>
